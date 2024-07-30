@@ -6,10 +6,13 @@
     "dev": "bun run --watch src/index.ts"
   },
   "dependencies": {
+    "@prisma/client": "^5.17.0",
+    "@tdanks2000/tmdb-wrapper": "^1.0.3",
     "elysia": "latest"
   },
   "devDependencies": {
-    "bun-types": "latest"
+    "bun-types": "latest",
+    "prisma": "^5.17.0"
   },
   "module": "src/index.js"
 }

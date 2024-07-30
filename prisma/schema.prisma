@@ -1,0 +1,61 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+model Movie {
+  id           Int       @id @unique
+  title        String
+  release_date DateTime?
+
+  skip_times SkipTime[]
+}
+
+model Tv {
+  id             Int       @id @default(autoincrement())
+  title          String
+  first_air_date DateTime?
+
+  seasons Season[]
+}
+
+model Season {
+  id            Int       @id @default(autoincrement())
+  season_number Int
+  episodes      Episode[]
+  item          Tv?       @relation(fields: [item_id], references: [id])
+  item_id       Int?
+}
+
+model Episode {
+  id             Int     @id @default(autoincrement())
+  title          String?
+  episode_number Int
+
+  skip_times SkipTime[]
+  Season     Season?    @relation(fields: [season_id], references: [id])
+  season_id  Int?
+}
+
+model SkipTime {
+  id         Int    @id @default(autoincrement())
+  type       String // Recap, Intro, Outro (credits)
+  start_time Int
+  end_time   Int
+
+  Episode    Episode? @relation(fields: [episode_id], references: [id])
+  episode_id Int?
+  Movie      Movie?   @relation(fields: [movieId], references: [id])
+  movieId    Int?
+}
