@@ -10,7 +10,7 @@ const port = process.env.PORT ?? 3002;
 
 const app = new Elysia()
   .use(addController)
-  .get("/", () => "Hello Elysia")
+  .get("/", () => "Hello From TvSkip")
   .listen(port);
 
 console.log(
