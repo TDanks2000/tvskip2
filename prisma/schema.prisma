@@ -39,13 +39,12 @@ model Season {
 }
 
 model Episode {
-  id             Int     @id @default(autoincrement())
+  id             Int        @id @default(autoincrement())
   title          String?
   episode_number Int
-
-  skip_times SkipTime[]
-  Season     Season?    @relation(fields: [season_id], references: [id])
-  season_id  Int?
+  skip_times     SkipTime[]
+  Season         Season?    @relation(fields: [season_id], references: [id])
+  season_id      Int?
 }
 
 model SkipTime {
