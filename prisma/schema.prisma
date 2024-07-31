@@ -52,6 +52,8 @@ model SkipTime {
   type       String // Recap, Intro, Outro (credits)
   start_time Int
   end_time   Int
+  up_votes   Int    @default(0)
+  down_votes Int    @default(0)
 
   Episode    Episode? @relation(fields: [episode_id], references: [id])
   episode_id Int?

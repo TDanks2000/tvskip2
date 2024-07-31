@@ -7,9 +7,11 @@
     "start": "NODE_ENV=production bun src/index.ts"
   },
   "dependencies": {
+    "@elysiajs/cookie": "^0.8.0",
+    "@elysiajs/swagger": "^1.1.0",
     "@prisma/client": "^5.17.0",
     "@tdanks2000/tmdb-wrapper": "^1.0.3",
-    "elysia": "latest"
+    "elysia": "^1.1.4"
   },
   "devDependencies": {
     "bun-types": "latest",
