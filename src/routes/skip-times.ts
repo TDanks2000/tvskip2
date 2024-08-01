@@ -118,7 +118,14 @@ export const addController = new Elysia({ prefix: "/skip-times" })
                 episodes: {
                   select: {
                     episode_number: true,
-                    skip_times: true,
+                    skip_times: {
+                      select: {
+                        start_time: true,
+                        end_time: true,
+                        up_votes: true,
+                        down_votes: true,
+                      },
+                    },
                   },
                 },
               },
