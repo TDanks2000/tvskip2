@@ -3,7 +3,7 @@ import { swagger } from "@elysiajs/swagger";
 import { PrismaClient } from "@prisma/client";
 import { TMDB } from "@tdanks2000/tmdb-wrapper";
 import { Elysia } from "elysia";
-import { addController } from "./routes";
+import { addController } from "./routes/skip-times";
 
 export const tmdb = new TMDB(process.env.tmdb_api_key as string);
 export const prisma = new PrismaClient();
